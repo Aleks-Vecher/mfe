@@ -18,6 +18,7 @@ const devConfig = {
       remotes: {
         // 'marketing@http://localhost:8081/remoteEntry.js' : marketing is the name from another frontend of dev webpack moduleFederation plugin
         marketing: "marketing@http://localhost:8081/remoteEntry.js",
+        auth: "auth@http://localhost:8082/remoteEntry.js",
       },
       shared: packageJson.dependencies,
     }),

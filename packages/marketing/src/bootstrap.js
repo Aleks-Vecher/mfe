@@ -4,8 +4,12 @@ import App from "./App";
 import { createMemoryHistory, createBrowserHistory } from "history";
 
 // Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory }) => {
-  const memoryHistory = defaultHistory || createMemoryHistory();
+const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+  const memoryHistory =
+    defaultHistory ||
+    createMemoryHistory({
+      initialEntries: [initialPath],
+    });
 
   //automatically call onNavigate after memory history change by clicking any navigation link
   if (onNavigate) {
@@ -31,7 +35,7 @@ const mount = (el, { onNavigate, defaultHistory }) => {
 if (process.env.NODE_ENV === "development") {
   const devRoot = document.querySelector("#_marketing-dev-root");
   if (devRoot) {
-    mount(devRoot, { defaultHistory: createBrowserHistory()});
+    mount(devRoot, { defaultHistory: createBrowserHistory() });
   }
 }
 
